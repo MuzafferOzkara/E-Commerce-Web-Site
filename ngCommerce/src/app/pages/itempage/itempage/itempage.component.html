@@ -1,0 +1,65 @@
+<app-header></app-header>
+
+
+
+
+<div class="row">
+  <div class="col-md-2">
+    <app-category></app-category>
+  </div>
+
+ 
+  <div class="col-md-10">
+     
+    <h2 *ngIf="items; else noItem">Ürünler</h2>
+
+    <div class="form-group">
+         
+        <input class="form-control" id="itemName" placeholder="Ürün arama"
+        [(ngModel)]="filterText"
+        >
+        <small *ngIf="filterText" class="form-text text-muted">
+          Şu an aradığınız <strong>{{filterText}}</strong> için çıkan ürün sonuçları bunlardır.</small>
+      </div>
+
+   
+    
+   
+    <div class="row" >
+
+        <!-- <ng-template #noItem>
+            <div class="alert alert-primary" role="alert">
+                Bu kategoride ürün yoktur.
+              </div>
+        </ng-template> -->
+
+
+     
+          
+          <div class="card" style="width: 18rem;"   *ngFor='let item of items | itemFilter:filterText; let i = index'>
+            
+            <!-- <td *ngIf='item.category==3'> -->
+              <img src="{{item.imagelink}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{item.name }}</h5>
+                <p class="card-text">{{item.price | currency:'TRY': '₺'}} TL</p>
+                <!-- <button (click)="addToCart(item)" class="btn btn-primary" [routerLink]="['/cart', { id:product.id }]">Sepete Ekle</button> -->
+                <button (click)="addToCart(item)" class="btn btn-primary" style="margin-left:30%" routerLink="/items/{{item.itemId}}">Sepete Ekle</button>
+              </div>    
+            
+             
+            <!-- </td> -->
+         
+       
+      </div>
+ 
+   
+
+
+
+    </div>
+
+
+
+  </div>
+</div>

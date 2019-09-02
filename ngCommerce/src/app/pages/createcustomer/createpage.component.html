@@ -1,0 +1,67 @@
+<div class = 'container'>
+    <div class = 'header'>
+            <h3>Customers</h3>
+            <div class="row justify-content-end">
+                
+            </div>
+
+            <table class="table table-hover">
+        
+                <tr>
+                    <th scope = 'col'>#</th>                   
+                    <th scope = 'col'>Username</th>
+                    <th scope = 'col'>Email</th>
+                    <th scope = 'col'>Password</th>
+                    <th scope = 'col'></th>
+                </tr>
+        
+                <tbody>
+                    <tr *ngFor='let customer of customers; let i = index'>
+                        <th>{{i + 1}}</th>                       
+                        <td>{{customer.username }}</td>
+                        <td>{{customer.email }}</td>
+                        <td>{{customer.password}}</td>
+                    </tr>
+        
+                </tbody>
+            </table>
+            <br>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Create</button>
+    </div>   
+  </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create Account</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form #newMedicineForm = 'ngForm' class = 'form-container'>              
+
+                  <div class = 'form-group col-md-3' class="form-container">
+                      <label for = 'inputName'>Username*</label>
+                        <input class = 'form-control' id = 'inputName' type = 'text' name = 'username' ngModel placeholder = 'Username' required>
+                    </div>
+  
+                <div class = 'form-group col-md-3' class="form-container">
+                  <label for = 'inputName'>Email*</label>
+                    <input class = 'form-control' id = 'inputName' type = 'text' name = 'email' ngModel placeholder = 'Email' required>
+                </div>
+                <div class = 'form-group col-md-3' class="form-container">
+                    <label for = 'inputName'>Password*</label>
+                      <input class = 'form-control' id = 'inputName' type = 'text' name = 'password' ngModel placeholder = 'Password' required>
+                  </div>         
+                <br>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" [disabled] = '!newMedicineForm.valid' (click) = 'saveCustomer(newMedicineForm.value)' data-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

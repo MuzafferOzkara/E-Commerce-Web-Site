@@ -1,0 +1,30 @@
+img{
+    width: 150px;
+    height: 150px;
+    
+  
+
+}
+
+.card-img-top{
+        display: block;
+        margin: auto;
+
+}
+.card-title{
+    display: block;
+    /* padding:auto; */
+   
+    margin-left:30%;
+    font-size: 20px;
+   
+    
+        
+}
+
+.card-text{
+    display: block;
+    margin-left: 35%;
+    
+}
+
